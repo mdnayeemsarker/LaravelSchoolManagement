@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\LoginController;
 use App\Http\Controllers\DirectoryPagesController;
 
 /*
@@ -24,13 +25,15 @@ Route::get('/dashboard', function () {
 
 require __DIR__.'/auth.php';
 
+// Directory
 Route::get('/about-us', [DirectoryPagesController::class, 'about'])->name('about');
 Route::get('/our-blog', [DirectoryPagesController::class, 'blog'])->name('blog');
 Route::get('/all-teachers', [DirectoryPagesController::class, 'teachers'])->name('teachers');
 Route::get('/contact-us', [DirectoryPagesController::class, 'contact'])->name('contact');
 
-Route::get('/admin', [DirectoryPagesController::class, 'admin']);
-Route::get('/admin-dashboard', [DirectoryPagesController::class, 'admindashboard'])->name('admindashboard');
-// Route::get('/admin', function(){
-//     return view('admin.login');
-// });
+Route::get('/admin', [DirectoryPagesController::class, 'admin'])->middleware('guest');
+Route::get('/admindashboard', [DirectoryPagesController::class, 'admindashboard'])->middleware('auth');
+Route::get('/abmn', [DirectoryPagesController::class, 'admindashboard']);
+
+// Auth Route
+Route::post('/adminlogin', [LoginController::class, 'adminlogin']);
