@@ -19,9 +19,6 @@ class DirectoryPagesController extends Controller
         return view('page.contact');
     }
     public function admin(){
-        return view('admin.login');
-    }
-    public function admindashboard(){
         return view('admin.dashboard');
     }
 }

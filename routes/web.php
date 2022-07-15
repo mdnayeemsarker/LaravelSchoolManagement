@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\LoginController;
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DirectoryPagesController;
 
 /*
@@ -20,7 +20,15 @@ Route::get('/', function () {
 });
 
 Route::get('/dashboard', function () {
-    return view('dashboard');
+    if (auth()->user()->type == 1) {
+       return redirect('/admin');
+    }
+    if (auth()->user()->type == 2) {
+       return redirect('/teacher');
+    }
+    if (auth()->user()->type == 3) {
+       return redirect('/student');
+    }
 })->middleware(['auth'])->name('dashboard');
 
 require __DIR__.'/auth.php';
@@ -31,9 +39,7 @@ Route::get('/our-blog', [DirectoryPagesController::class, 'blog'])->name('blog')
 Route::get('/all-teachers', [DirectoryPagesController::class, 'teachers'])->name('teachers');
 Route::get('/contact-us', [DirectoryPagesController::class, 'contact'])->name('contact');
 
-Route::get('/admin', [DirectoryPagesController::class, 'admin'])->middleware('guest');
-Route::get('/admindashboard', [DirectoryPagesController::class, 'admindashboard'])->middleware('auth');
-Route::get('/abmn', [DirectoryPagesController::class, 'admindashboard']);
+Route::get('/admin', [DirectoryPagesController::class, 'admin'])->middleware('auth')->name('admin');
 
 // Auth Route
-Route::post('/adminlogin', [LoginController::class, 'adminlogin']);
+Route::post('/login', [AuthController::class, 'login']);
