@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DirectoryPagesController;
+use App\Http\Controllers\StudentsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -43,3 +44,8 @@ Route::get('/admin', [DirectoryPagesController::class, 'admin'])->middleware('au
 
 // Auth Route
 Route::post('/login', [AuthController::class, 'login']);
+Route::post('/logout', [AuthController::class, 'logout']);
+
+// Students Route
+Route::get('/all-students', [StudentsController::class, 'index'])->name('all_students');
+Route::get('/create-students', [StudentsController::class, 'create'])->name('create_students');
