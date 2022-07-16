@@ -3,7 +3,9 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DirectoryPagesController;
-use App\Http\Controllers\StudentsController;
+use App\Http\Controllers\GroupController;
+use App\Http\Controllers\ClassController;
+use App\Http\Controllers\StudentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -39,7 +41,6 @@ Route::get('/about-us', [DirectoryPagesController::class, 'about'])->name('about
 Route::get('/our-blog', [DirectoryPagesController::class, 'blog'])->name('blog');
 Route::get('/all-teachers', [DirectoryPagesController::class, 'teachers'])->name('teachers');
 Route::get('/contact-us', [DirectoryPagesController::class, 'contact'])->name('contact');
-
 Route::get('/admin', [DirectoryPagesController::class, 'admin'])->middleware('auth')->name('admin');
 
 // Auth Route
@@ -47,5 +48,16 @@ Route::post('/login', [AuthController::class, 'login']);
 Route::post('/logout', [AuthController::class, 'logout']);
 
 // Students Route
-Route::get('/all-students', [StudentsController::class, 'index'])->name('all_students');
-Route::get('/create-students', [StudentsController::class, 'create'])->name('create_students');
+Route::get('/all-students', [StudentController::class, 'index'])->name('index_students');
+Route::get('/create-student', [StudentController::class, 'create'])->name('create_student');
+Route::post('/store-student', [StudentController::class, 'store'])->middleware('auth');
+
+// Group Route
+Route::get('/all-groups', [GroupController::class, 'index'])->name('index_group');
+Route::get('/create-new-groups', [GroupController::class, 'create'])->name('create_group');
+Route::post('/storegroup', [GroupController::class, 'store'])->middleware('auth');
+
+// Class Route
+Route::get('/all-classes', [ClassController::class, 'index'])->name('index_class');
+Route::get('/create-new-classes', [ClassController::class, 'create'])->name('create_class');
+Route::post('/storeclass', [ClassController::class, 'store'])->middleware('auth');

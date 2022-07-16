@@ -40,19 +40,66 @@
                     <a href="#" class="nav-link">
                         <i class="nav-icon fas fa-th"></i>
                         <p>
+                            Groups
+                            <i class="fas fa-angle-left right"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item"> 
+                            <a href="{{ route('index_group') }}" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>All Groups</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('create_group') }}" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Add New Groups</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="nav-item menu-close">
+                    <a href="#" class="nav-link">
+                        <i class="nav-icon fas fa-th"></i>
+                        <p>
+                            Class
+                            <i class="fas fa-angle-left right"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item"> 
+                            <a href="{{ route('index_class') }}" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>All Class</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('create_class') }}" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Add New Class</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="nav-item menu-close">
+                    <a href="#" class="nav-link">
+                        {{-- <i class="nav-icon fas fa-th"></i> --}}
+                        <i class="nav-icon fas ion-person"></i>
+                        <p>
                             Students
                             <i class="fas fa-angle-left right"></i>
                         </p>
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="{{ route('all_students') }}" class="nav-link">
+                            <a href="{{ route('index_students') }}" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>All Students</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{ route('create_students') }}" class="nav-link">
+                            <a href="{{ route('create_student') }}" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Add New Student</p>
                             </a>

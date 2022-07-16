@@ -1,5 +1,4 @@
 @extends('layouts.admin_app')
-
 @section('admin_title')
     {{ config('app_name', 'All Students - School MS') }}
 @endsection
@@ -25,7 +24,7 @@
                     </div><!-- /.col -->
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
-                            <a class="bg-primary text-white pl-2 pr-2" href="{{ route('admin') }}">Create New Students</a>
+                            <a class="bg-primary text-white pl-2 pr-2" href="{{ route('create_student') }}">Create New Students</a>
                         </ol>
                     </div><!-- /.col -->
                 </div><!-- /.row -->
@@ -472,22 +471,4 @@
             </div>
         </div>
     </div>
-
-    <script>
-        $(function () {
-          $("#example1").DataTable({
-            "responsive": true, "lengthChange": false, "autoWidth": false,
-            "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
-          }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
-          $('#example2').DataTable({
-            "paging": true,
-            "lengthChange": false,
-            "searching": false,
-            "ordering": true,
-            "info": true,
-            "autoWidth": false,
-            "responsive": true,
-          });
-        });
-      </script>
 @endsection
